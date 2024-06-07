@@ -5,17 +5,27 @@ public class VigenereCipher {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Enter the message: ");
-        String message = scanner.nextLine();
+        if (args[0].equals("encrypt")){
+            System.out.println("Enter the message: ");
+            String message = scanner.nextLine();
+            
+            System.out.println("Enter the keyword: ");
+            String keyword = scanner.nextLine();
+            
+            String encryptedMessage = encrypt(message, keyword);
+            System.out.println("Encrypted Message: " + encryptedMessage);
+        }
         
-        System.out.println("Enter the keyword: ");
-        String keyword = scanner.nextLine();
-        
-        String encryptedMessage = encrypt(message, keyword);
-        System.out.println("Encrypted Message: " + encryptedMessage);
-        
-        String decryptedMessage = decrypt(encryptedMessage, keyword);
-        System.out.println("Decrypted Message: " + decryptedMessage);
+        if(args[0].equals("decrypt")){
+            System.out.println("Enter the encrypted message: ");
+            String encryptedMessage = scanner.nextLine();
+            
+            System.out.println("Enter the keyword: ");
+            String keyword = scanner.nextLine();
+            
+            String decryptedMessage = decrypt(encryptedMessage, keyword);
+            System.out.println("Decrypted Message: " + decryptedMessage);
+        }
         
         scanner.close();
     }
