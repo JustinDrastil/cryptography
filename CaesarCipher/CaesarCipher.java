@@ -5,18 +5,27 @@ public class CaesarCipher {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        //Prompts user for input
-        System.out.println("Enter the message: ");
-        String message = scanner.nextLine();
+        if (args[0].equals("encrypt")){
+            System.out.println("Enter the message: ");
+            String message = scanner.nextLine();
+            
+            System.out.println("Enter the keyword: ");
+            int key = scanner.nextInt();
+            
+            String encryptedMessage = encrypt(message, key);
+            System.out.println("Encrypted Message: " + encryptedMessage);
+        }
         
-        System.out.println("Enter the key: ");
-        int key = scanner.nextInt();
-        
-        String encryptedMessage = encrypt(message, key);
-        System.out.println("Encrypted Message: " + encryptedMessage);
-        
-        String decryptedMessage = decrypt(encryptedMessage, key);
-        System.out.println("Decrypted Message: " + decryptedMessage);
+        if(args[0].equals("decrypt")){
+            System.out.println("Enter the encrypted message: ");
+            String encryptedMessage = scanner.nextLine();
+            
+            System.out.println("Enter the keyword: ");
+            int key = scanner.nextInt();
+            
+            String decryptedMessage = decrypt(encryptedMessage, key);
+            System.out.println("Decrypted Message: " + decryptedMessage);
+        }
         
         scanner.close();
     }
